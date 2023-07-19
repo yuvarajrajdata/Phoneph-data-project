@@ -17,16 +17,16 @@ st.set_page_config(
 )
 
 # Read the "india_map" CSV file into a DataFrame
-df1 = pd.read_csv('C:/Users/user/Desktop/guvi pro/phonepepro/data/india_map.csv')
+df1 = pd.read_csv('data/india_map.csv')
 
 # Read the "Bar_chart" CSV file into a DataFrame
-df2 = pd.read_csv('C:/Users/user/Desktop/guvi pro/phonepepro/data/bar_chart.csv')
+df2 = pd.read_csv('data/bar_chart.csv')
 
 # Read the "Histogram_district" CSV file into a DataFrame :
-df3 = pd.read_csv('C:/Users/user/Desktop/guvi pro/phonepepro/data/histogram_district.csv')
+df3 = pd.read_csv('data/histogram_district.csv')
 
 # Read the "Histogram_state" CSV file into a DataFrame :
-df4 = pd.read_csv('C:/Users/user/Desktop/guvi pro/phonepepro/data/line_plot.csv')
+df4 = pd.read_csv('data/line_plot.csv')
 
 
 
