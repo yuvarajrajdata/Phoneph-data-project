@@ -290,8 +290,7 @@ def main_line_plot():
     filtered_data_line_plot = df4[
         (df4['State'] == selected_state_line_plot) &
         (df4['Year'] == selected_year_line_plot) &
-        (df4['District'] == selected_districts_line_plot)
-    ]
+        (df4['District'] == selected_districts_line_plot)]
 
     # Create the plot
     fig, ax = plt.subplots(figsize=(10, 6))
