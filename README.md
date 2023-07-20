@@ -9,6 +9,8 @@ import streamlit as st
 import altair as alt
 import matplotlib.pyplot as plt
 import seaborn as sns
+# Visit app :
+https://dashboard1py-tq1731pyqxa.streamlit.app/
 
 
 # Set the page configuration
