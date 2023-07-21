@@ -232,7 +232,7 @@ def main_top_10_states():
     # Plot the transaction counts for the top 10 states
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.barh(top_10_states['state'], top_10_states['transaction_count'], color=colors)  # Corrected barh arguments
-    ax.set_xlabel("Transaction Count (Billions)
+    ax.set_xlabel("Transaction Count (Billions))
     ax.set_ylabel("State")
     ax.set_title(f"Top 10 States by Transaction Count in {selected_year}")
     st.pyplot(fig)
