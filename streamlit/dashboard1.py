@@ -190,7 +190,7 @@ def main_district_wise():
     plt.tight_layout()
 
     # Display the Amount histogram using Streamlit
-    st.pyplot(plt.gcf()) .   make plot as horizontal view and make good label .
+    st.pyplot(plt.gcf()) 
 
 # Top  10 states by transaction count :
 
