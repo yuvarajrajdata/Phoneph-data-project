@@ -172,7 +172,8 @@ def main_district_wise():
 
     # Create a bar plot for Count
     plt.figure(figsize=(12, 6))
-    filtered_data_histogram['Count'] = filtered_data_histogram['Count'].astype('int64')
+    filtered_data_histogram['Count'] = pd.to_numeric(filtered_data_histogram['Count'], errors='coerce')
+    filtered_data_histogram = filtered_data_histogram.dropna(subset=['Count'])
     sns.barplot(x='District', y='Count', data=filtered_data_histogram, palette='viridis', orientation='horizontal')
     plt.xlabel('Count')
     plt.ylabel('District')
