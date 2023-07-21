@@ -262,13 +262,12 @@ def main_top_10_states_trans_amount():
     # Create a color palette for the bar chart
     num_states = len(top_10_states)
     colors = sns.color_palette('viridis', num_states)
-
-    # Plot the transaction counts for the top 10 states
+    
+    # Plot the transaction amounts for the top 10 states
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.bar(top_10_states['state'], top_10_states['transaction_amount'], color=colors)
-    ax.set_xticklabels(top_10_states['state'], rotation=90)
-    ax.set_xlabel("State")
-    ax.set_ylabel("Transaction Amount")
+    ax.barh(top_10_states['state'], top_10_states['transaction_amount'], color=colors)
+    ax.set_xlabel("Transaction Amount (Billions)")
+    ax.set_ylabel("State")
     ax.set_title(f"Top 10 States by Transaction Amount in {selected_year}")
     st.pyplot(fig)
    
