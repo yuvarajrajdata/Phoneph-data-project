@@ -176,7 +176,7 @@ def main_district_wise():
     # Plot 1: Bar plot for Count
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
-    plt.xlabel('Count (Millions)')  # Updated x-axis label
+    plt.xlabel('Count (Billions)')  # Updated x-axis label
     plt.ylabel('District')
     plt.title('Transactions Counts by (District or UT)')
     plt.xticks(rotation=0)
@@ -191,7 +191,7 @@ def main_district_wise():
     # Plot 2: Horizontal bar plot for Amount
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Amount', data=filtered_data_histogram, palette='tab20')
-    plt.xlabel('Amount (Millions)')  # Updated x-axis label
+    plt.xlabel('Amount (Billions)')  # Updated x-axis label
     plt.ylabel('District')
     plt.title('Transaction Amount by (District or UT)')
     plt.xticks(rotation=0)
