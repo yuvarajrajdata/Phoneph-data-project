@@ -128,7 +128,7 @@ def main_bar_chart():
     # Create a simple histogram using Altair
     brand_names = filtered_data_bar_chart['Brands'].unique()
     custom_color_scheme = alt.Scale(domain=brand_names,
-                                   range=['#F40009', '#005BBB', '#FFC72C', '#000000', '#B7B7B7'])
+                                   range=['#8A2BE2', '#FFFF00', '#008000', '#000000', '#FF0000' ,'#0000FF' , '#FFC0CB' , '#B76E79' , '#C0C0C0' , '#ba0c2f' , '#8C3333'])
     chart = alt.Chart(filtered_data_bar_chart).mark_bar().encode(
         x=alt.X('Brands', sort='-y'),
         y='Count',
