@@ -168,29 +168,30 @@ def main_district_wise():
     # Sort the data in ascending order based on 'Count' and 'Amount'
     filtered_data_histogram = filtered_data_histogram.sort_values(['Count', 'Amount'], ascending=[True, True])
 
-    # Create a bar plot for Count
+    # Create a horizontal bar plot for Count
     plt.figure(figsize=(12, 6))
-    sns.barplot(x='District', y='Count', data=filtered_data_histogram, palette='viridis')
-    plt.xlabel('District')
-    plt.ylabel('Count')
+    sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
+    plt.xlabel('Count')
+    plt.ylabel('District')
     plt.title('Transactions Counts by District (Ascending Order)')
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=0)
     plt.tight_layout()
-
+    
     # Display the Count histogram using Streamlit
     st.pyplot(plt.gcf())
     
-    # Create a bar plot for Amount
+    # Create a horizontal bar plot for Amount
     plt.figure(figsize=(12, 6))
-    sns.barplot(x='District', y='Amount', data=filtered_data_histogram, palette='tab20')
-    plt.xlabel('District')
-    plt.ylabel('Amount')
-    plt.title('Transaction Amount by District ')
-    plt.xticks(rotation=90)
+    sns.barplot(y='District', x='Amount', data=filtered_data_histogram, palette='tab20')
+    plt.xlabel('Amount')
+    plt.ylabel('District')
+    plt.title('Transaction Amount by District')
+    plt.xticks(rotation=0)
     plt.tight_layout()
-
+    
     # Display the Amount histogram using Streamlit
-    st.pyplot(plt.gcf()) 
+    st.pyplot(plt.gcf())
+
 
 # Top  10 states by transaction count :
 
