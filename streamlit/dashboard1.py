@@ -171,17 +171,12 @@ def main_district_wise():
    
     # Function to format the scale label
     def format_scale_label(value):
-        scales = ['', 'K', 'M', 'B', 'T']  # Add more suffixes if needed
-        scale_index = 0
-        while value >= 1000 and scale_index < len(scales)-1:
-            value /= 1000.0
-            scale_index += 1
-        return f"{value:.0f}{scales[scale_index]}"
+        return f"{value/1000000:.0f}M"
     
     # Plot 1: Bar plot for Count
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
-    plt.xlabel('Count')
+    plt.xlabel('Count (Millions)')  # Updated x-axis label
     plt.ylabel('District')
     plt.title('Transactions Counts by (District or UT)')
     plt.xticks(rotation=0)
@@ -189,10 +184,10 @@ def main_district_wise():
     # Add the scale label for Count
     max_count = filtered_data_histogram['Count'].max()
     scale_label = format_scale_label(max_count)
-    plt.text(max_count, -1, f"Scale: {scale_label}x", ha='right', fontsize=10)
+    plt.text(max_count/2, -1, f"Scale: {scale_label}", ha='center', fontsize=10)  # Center the label
     
-    # Add a note inside the plot
-    plt.text(max_count / 2, -1.5, "Note: Counts rounded to the nearest scale", ha='center', fontsize=10)
+    # Add a note inside the plot (placed below the x-axis label)
+    plt.text(max_count/2, -1.5, "Note: Counts rounded to the nearest scale", ha='center', fontsize=10)
     
     plt.tight_layout()
     
@@ -202,7 +197,7 @@ def main_district_wise():
     # Plot 2: Horizontal bar plot for Amount
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Amount', data=filtered_data_histogram, palette='tab20')
-    plt.xlabel('Amount')
+    plt.xlabel('Amount (Millions)')  # Updated x-axis label
     plt.ylabel('District')
     plt.title('Transaction Amount by (District or UT)')
     plt.xticks(rotation=0)
@@ -210,10 +205,10 @@ def main_district_wise():
     # Add the scale label for Amount
     max_amount = filtered_data_histogram['Amount'].max()
     scale_label_amount = format_scale_label(max_amount)
-    plt.text(max_amount, -1, f"Scale: {scale_label_amount}x", ha='right', fontsize=10)
+    plt.text(max_amount/2, -1, f"Scale: {scale_label_amount}", ha='center', fontsize=10)  # Center the label
     
-    # Add a note inside the plot
-    plt.text(max_amount / 2, -1.5, "Note: Amounts rounded to the nearest scale", ha='center', fontsize=10)
+    # Add a note inside the plot (placed below the x-axis label)
+    plt.text(max_amount/2, -1.5, "Note: Amounts rounded to the nearest scale", ha='center', fontsize=10)
     
     plt.tight_layout()
     
