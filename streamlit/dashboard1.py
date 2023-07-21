@@ -144,7 +144,6 @@ def main_bar_chart():
 
 # Step 3:
 
-# Create the Streamlit app for the histograms
 def main_district_wise():
     # Set the title of the app
     st.title('Data visualization on District wise transactions')
@@ -174,7 +173,7 @@ def main_district_wise():
     plt.figure(figsize=(12, 6))
     filtered_data_histogram['Count'] = pd.to_numeric(filtered_data_histogram['Count'], errors='coerce')
     filtered_data_histogram = filtered_data_histogram.dropna(subset=['Count'])
-    palette = list(plt.cm.viridis(np.linspace(0, 1, len(filtered_data_histogram))))
+    palette = list(plt.cm.tab20(np.linspace(0, 1, len(filtered_data_histogram))))
     sns.barplot(x='District', y='Count', data=filtered_data_histogram, palette=palette, orientation='horizontal')
     plt.xlabel('Count')
     plt.ylabel('District')
@@ -192,6 +191,7 @@ def main_district_wise():
 
     # Display the Amount histogram using Streamlit
     st.pyplot(plt.gcf())
+
 
 
 
