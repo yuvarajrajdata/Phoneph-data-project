@@ -126,18 +126,18 @@ def main_bar_chart():
     filtered_data_bar_chart = filtered_data_bar_chart.sort_values('Count', ascending=True)
 
     # Create a simple histogram using Altair
+    custom_color_scheme = alt.Scale(domain=filtered_data_bar_chart['Brands'].unique(),
+                                   range=['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF'])
     chart = alt.Chart(filtered_data_bar_chart).mark_bar().encode(
         x=alt.X('Brands', sort='-y'),
         y='Count',
-        color='Brands',
+        color=alt.Color('Brands', scale=custom_color_scheme),
         tooltip=['Brands', 'Count']
     ).properties(
         width=600,
         height=400,
         title='Histogram of Count by Brand (Ascending Order)'
     )
-
-    # Render the chart using Streamlit
     st.altair_chart(chart, use_container_width=True)
 
 
