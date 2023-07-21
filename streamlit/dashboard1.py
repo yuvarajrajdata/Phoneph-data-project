@@ -184,10 +184,10 @@ def main_district_wise():
     # Add the scale label for Count
     max_count = filtered_data_histogram['Count'].max()
     scale_label = format_scale_label(max_count)
-    plt.text(max_count/2, -1, f"Scale: {scale_label}", ha='center', fontsize=10)  # Center the label
+    plt.text(max_count/2, -1, f"Scale: {scale_label}", ha='right', fontsize=10)  # Center the label
     
     # Add a note inside the plot (placed below the x-axis label)
-    plt.text(max_count/2, -1.5, "Note: Counts rounded to the nearest scale", ha='center', fontsize=10)
+    plt.text(max_count/2, -1.5, "Note: Counts rounded to the nearest scale", ha='right', fontsize=10)
     
     plt.tight_layout()
     
