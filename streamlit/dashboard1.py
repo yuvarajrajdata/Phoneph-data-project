@@ -168,7 +168,8 @@ def main_district_wise():
     # Sort the data in ascending order based on 'Count' and 'Amount'
     filtered_data_histogram = filtered_data_histogram.sort_values(['Count', 'Amount'], ascending=[True, True])
     
-     # Plot 1: Bar plot for Count
+   
+    # Plot 1: Bar plot for Count
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
     plt.xlabel('Count')
@@ -178,8 +179,14 @@ def main_district_wise():
     
     # Add the scale label for Count
     max_count = filtered_data_histogram['Count'].max()
-    scale_label = f"Scale: {max_count // 10}"  # Assuming a scale of 10 for this example
+    if max_count >= 10000:
+        scale_label = f"Scale: {max_count // 1000}K"
+    else:
+        scale_label = f"Scale: {max_count}"
     plt.text(max_count, -0.5, scale_label, ha='right', fontsize=10)
+    
+    # Add a note inside the plot
+    plt.text(max_count / 2, -0.8, "Note: Counts rounded to the nearest scale", ha='center', fontsize=10)
     
     plt.tight_layout()
     
@@ -196,8 +203,14 @@ def main_district_wise():
     
     # Add the scale label for Amount
     max_amount = filtered_data_histogram['Amount'].max()
-    scale_label_amount = f"Scale: {max_amount // 1000}K"  # Assuming a scale of 1000 for this example
+    if max_amount >= 10000:
+        scale_label_amount = f"Scale: {max_amount // 1000}K"
+    else:
+        scale_label_amount = f"Scale: {max_amount}"
     plt.text(max_amount, -0.5, scale_label_amount, ha='right', fontsize=10)
+    
+    # Add a note inside the plot
+    plt.text(max_amount / 2, -0.8, "Note: Amounts rounded to the nearest scale", ha='center', fontsize=10)
     
     plt.tight_layout()
     
