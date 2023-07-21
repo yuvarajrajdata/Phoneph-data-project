@@ -168,24 +168,37 @@ def main_district_wise():
     # Sort the data in ascending order based on 'Count' and 'Amount'
     filtered_data_histogram = filtered_data_histogram.sort_values(['Count', 'Amount'], ascending=[True, True])
     
+     # Plot 1: Bar plot for Count
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
     plt.xlabel('Count')
     plt.ylabel('District')
     plt.title('Transactions Counts by (District or UT)')
     plt.xticks(rotation=0)
+    
+    # Add the scale label for Count
+    max_count = filtered_data_histogram['Count'].max()
+    scale_label = f"Scale: {max_count // 10}"  # Assuming a scale of 10 for this example
+    plt.text(max_count, -0.5, scale_label, ha='right', fontsize=10)
+    
     plt.tight_layout()
     
     # Display the Count histogram using Streamlit
     st.pyplot(plt.gcf())
     
-    # Create a horizontal bar plot for Amount
+    # Plot 2: Horizontal bar plot for Amount
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Amount', data=filtered_data_histogram, palette='tab20')
     plt.xlabel('Amount')
     plt.ylabel('District')
     plt.title('Transaction Amount by (District or UT)')
     plt.xticks(rotation=0)
+    
+    # Add the scale label for Amount
+    max_amount = filtered_data_histogram['Amount'].max()
+    scale_label_amount = f"Scale: {max_amount // 1000}K"  # Assuming a scale of 1000 for this example
+    plt.text(max_amount, -0.5, scale_label_amount, ha='right', fontsize=10)
+    
     plt.tight_layout()
     
     # Display the Amount histogram using Streamlit
