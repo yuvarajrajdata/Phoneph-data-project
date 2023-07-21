@@ -126,8 +126,9 @@ def main_bar_chart():
     filtered_data_bar_chart = filtered_data_bar_chart.sort_values('Count', ascending=True)
 
     # Create a simple histogram using Altair
-    custom_color_scheme = alt.Scale(domain=filtered_data_bar_chart['Brands'].unique(),
-                                   range=['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF'])
+    brand_names = filtered_data_bar_chart['Brands'].unique()
+    custom_color_scheme = alt.Scale(domain=brand_names,
+                                   range=['#F40009', '#005BBB', '#FFC72C', '#000000', '#B7B7B7'])
     chart = alt.Chart(filtered_data_bar_chart).mark_bar().encode(
         x=alt.X('Brands', sort='-y'),
         y='Count',
