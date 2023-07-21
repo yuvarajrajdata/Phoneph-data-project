@@ -44,7 +44,7 @@ def main():
     elif option == 'Brand Wise':
          main_bar_chart()
     elif option == 'District Wise':
-         main_histogram()
+         main_district_wise()
     elif option =='top_10_states_by_count':
          main_top_10_states()
     elif option =='top_10_states_by_trans_amount':
@@ -145,10 +145,10 @@ def main_bar_chart():
 # Step 3:
 
 # Create the Streamlit app for the histograms
-def main_histogram():
+def main_district_wise():
     # Set the title of the app
     st.title('Data visualization on District wise transactions')
-    st.subheader('Histogram Dashboard')
+    st.subheader('bar chart Dashboard')
 
     # Filter options for histogram
     states_histogram = df3['state'].unique()
@@ -172,27 +172,24 @@ def main_histogram():
 
     # Create a bar plot for Count
     plt.figure(figsize=(12, 6))
-    sns.barplot(x='District', y='Count', data=filtered_data_histogram, palette='viridis')
-    plt.xlabel('District')
-    plt.ylabel('Count')
+    sns.barplot(x='District', y='Count', data=filtered_data_histogram, palette='viridis', orientation='horizontal')
+    plt.xlabel('Count')
+    plt.ylabel('District')
     plt.title('Transactions Counts by District (Ascending Order)')
-    plt.xticks(rotation=90)
-    plt.tight_layout()
 
     # Display the Count histogram using Streamlit
     st.pyplot(plt.gcf())
-    
+
     # Create a bar plot for Amount
     plt.figure(figsize=(12, 6))
-    sns.barplot(x='District', y='Amount', data=filtered_data_histogram, palette='tab20')
-    plt.xlabel('District')
-    plt.ylabel('Amount')
-    plt.title('Transaction Amount by District (Ascending Order)')
-    plt.xticks(rotation=90)
-    plt.tight_layout()
+    sns.barplot(x='Amount', y='District', data=filtered_data_histogram, palette='tab20', orientation='horizontal')
+    plt.xlabel('Amount')
+    plt.ylabel('District')
+    plt.title('Transaction Amount by District')
 
     # Display the Amount histogram using Streamlit
     st.pyplot(plt.gcf())
+
 
 
 # Top  10 states by transaction count :
