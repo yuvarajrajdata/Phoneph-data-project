@@ -167,7 +167,8 @@ def main_district_wise():
 
     # Sort the data in ascending order based on 'Count' and 'Amount'
     filtered_data_histogram = filtered_data_histogram.sort_values(['Count', 'Amount'], ascending=[True, True])
-
+    
+    plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
     plt.xlabel('Count')
     plt.ylabel('District')
