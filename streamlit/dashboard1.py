@@ -181,8 +181,6 @@ def main_district_wise():
     plt.title('Transactions Counts by (District or UT)')
     plt.xticks(rotation=0)
     
-   
-    
     plt.tight_layout()
     
     # Display the Count histogram using Streamlit
@@ -233,7 +231,7 @@ def main_top_10_states():
 
     # Plot the transaction counts for the top 10 states
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.bar(top_10_states['state'], top_10_states['transaction_count'], color=colors)
+    ax.barh(top_10_states['state'], top_10_states['transaction_count'], color=colors)
     ax.set_xticklabels(top_10_states['state'], rotation=90)
     ax.set_xlabel("State")
     ax.set_ylabel("Transaction Count")
