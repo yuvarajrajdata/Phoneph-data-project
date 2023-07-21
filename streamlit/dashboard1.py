@@ -181,13 +181,7 @@ def main_district_wise():
     plt.title('Transactions Counts by (District or UT)')
     plt.xticks(rotation=0)
     
-    # Add the scale label for Count
-    max_count = filtered_data_histogram['Count'].max()
-    scale_label = format_scale_label(max_count)
-    plt.text(max_count/2, -1, f"Scale: {scale_label}", ha='right', fontsize=10)  # Center the label
-    
-    # Add a note inside the plot (placed below the x-axis label)
-    plt.text(max_count/2, -1.5, "Note: Counts rounded to the nearest scale", ha='right', fontsize=10)
+   
     
     plt.tight_layout()
     
@@ -202,14 +196,8 @@ def main_district_wise():
     plt.title('Transaction Amount by (District or UT)')
     plt.xticks(rotation=0)
     
-    # Add the scale label for Amount
-    max_amount = filtered_data_histogram['Amount'].max()
-    scale_label_amount = format_scale_label(max_amount)
-    plt.text(max_amount/2, -1, f"Scale: {scale_label_amount}", ha='center', fontsize=10)  # Center the label
-    
-    # Add a note inside the plot (placed below the x-axis label)
-    plt.text(max_amount/2, -1.5, "Note: Amounts rounded to the nearest scale", ha='center', fontsize=10)
-    
+   
+        
     plt.tight_layout()
     
     # Display the Amount histogram using Streamlit
