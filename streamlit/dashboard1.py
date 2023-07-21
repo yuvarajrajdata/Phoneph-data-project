@@ -169,6 +169,15 @@ def main_district_wise():
     filtered_data_histogram = filtered_data_histogram.sort_values(['Count', 'Amount'], ascending=[True, True])
     
    
+    # Function to format the scale label
+    def format_scale_label(value):
+        scales = ['', 'K', 'M', 'B', 'T']  # Add more suffixes if needed
+        scale_index = 0
+        while value >= 1000 and scale_index < len(scales)-1:
+            value /= 1000.0
+            scale_index += 1
+        return f"{value:.0f}{scales[scale_index]}"
+    
     # Plot 1: Bar plot for Count
     plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
@@ -179,14 +188,11 @@ def main_district_wise():
     
     # Add the scale label for Count
     max_count = filtered_data_histogram['Count'].max()
-    if max_count >= 10000:
-        scale_label = f"Scale: {max_count // 1000}K"
-    else:
-        scale_label = f"Scale: {max_count}"
-    plt.text(max_count, -0.5, scale_label, ha='right', fontsize=10)
+    scale_label = format_scale_label(max_count)
+    plt.text(max_count, -1, f"Scale: {scale_label}x", ha='right', fontsize=10)
     
     # Add a note inside the plot
-    plt.text(max_count / 2, -0.8, "Note: Counts rounded to the nearest scale", ha='center', fontsize=10)
+    plt.text(max_count / 2, -1.5, "Note: Counts rounded to the nearest scale", ha='center', fontsize=10)
     
     plt.tight_layout()
     
@@ -203,14 +209,11 @@ def main_district_wise():
     
     # Add the scale label for Amount
     max_amount = filtered_data_histogram['Amount'].max()
-    if max_amount >= 10000:
-        scale_label_amount = f"Scale: {max_amount // 1000}K"
-    else:
-        scale_label_amount = f"Scale: {max_amount}"
-    plt.text(max_amount, -0.5, scale_label_amount, ha='right', fontsize=10)
+    scale_label_amount = format_scale_label(max_amount)
+    plt.text(max_amount, -1, f"Scale: {scale_label_amount}x", ha='right', fontsize=10)
     
     # Add a note inside the plot
-    plt.text(max_amount / 2, -0.8, "Note: Amounts rounded to the nearest scale", ha='center', fontsize=10)
+    plt.text(max_amount / 2, -1.5, "Note: Amounts rounded to the nearest scale", ha='center', fontsize=10)
     
     plt.tight_layout()
     
