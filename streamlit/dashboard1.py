@@ -168,30 +168,11 @@ def main_district_wise():
     # Sort the data in ascending order based on 'Count' and 'Amount'
     filtered_data_histogram = filtered_data_histogram.sort_values(['Count', 'Amount'], ascending=[True, True])
 
-    # Get the maximum value in the 'Count' column from the data
-    max_count = filtered_data_histogram['Count'].max()
-    
-    # Determine an appropriate scale for the x-axis ticks based on the maximum value
-    # You can use a range of scales such as 1, 10, 100, 1000, etc., depending on your data
-    if max_count < 10:
-        scale = 1
-    elif max_count < 100:
-        scale = 10
-    elif max_count < 1000:
-        scale = 100
-    else:
-        scale = 1000
-    
-    # Set the x-axis ticks and labels based on the determined scale
-    x_ticks = list(range(0, max_count + scale, scale))
-    plt.xticks(x_ticks, rotation=0)
-    
-    # Rest of your plotting code
-    plt.figure(figsize=(12, 6))
     sns.barplot(y='District', x='Count', data=filtered_data_histogram, palette='viridis')
     plt.xlabel('Count')
     plt.ylabel('District')
     plt.title('Transactions Counts by (District or UT)')
+    plt.xticks(rotation=0)
     plt.tight_layout()
     
     # Display the Count histogram using Streamlit
