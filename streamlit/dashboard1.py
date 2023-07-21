@@ -143,7 +143,6 @@ def main_bar_chart():
 
 
 # Step 3:
-
 def main_district_wise():
     # Set the title of the app
     st.title('Data visualization on District wise transactions')
@@ -171,27 +170,27 @@ def main_district_wise():
 
     # Create a bar plot for Count
     plt.figure(figsize=(12, 6))
-    filtered_data_histogram['Count'] = pd.to_numeric(filtered_data_histogram['Count'], errors='coerce')
-    filtered_data_histogram = filtered_data_histogram.dropna(subset=['Count'])
-    palette = list(plt.cm.tab10(np.linspace(0, 1, len(filtered_data_histogram))))
-    sns.barplot(x='District', y='Count', data=filtered_data_histogram, palette=palette, orientation='horizontal')
-    plt.xlabel('Count')
-    plt.ylabel('District')
+    sns.barplot(x='District', y='Count', data=filtered_data_histogram, palette='viridis')
+    plt.xlabel('District')
+    plt.ylabel('Count')
     plt.title('Transactions Counts by District (Ascending Order)')
+    plt.xticks(rotation=90)
+    plt.tight_layout()
 
     # Display the Count histogram using Streamlit
     st.pyplot(plt.gcf())
-
+    
     # Create a bar plot for Amount
     plt.figure(figsize=(12, 6))
-    sns.barplot(x='Amount', y='District', data=filtered_data_histogram, palette='tab10', orientation='horizontal')
-    plt.xlabel('Amount')
-    plt.ylabel('District')
-    plt.title('Transaction Amount by District')
+    sns.barplot(x='District', y='Amount', data=filtered_data_histogram, palette='tab20')
+    plt.xlabel('District')
+    plt.ylabel('Amount')
+    plt.title('Transaction Amount by District ')
+    plt.xticks(rotation=90)
+    plt.tight_layout()
 
     # Display the Amount histogram using Streamlit
-    st.pyplot(plt.gcf())
-
+    st.pyplot(plt.gcf()) .   make plot as horizontal view and make good label .
 
 # Top  10 states by transaction count :
 
